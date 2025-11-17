@@ -4,7 +4,7 @@ import "github.com/mailru/easyjson/jwriter"
 
 type IntParamError struct {
 	BasicError
-	ParamName  string
+	ParamKey   string
 	ParamValue int64
 }
 
@@ -18,9 +18,7 @@ func (e *IntParamError) MarshalEasyJSON(w *jwriter.Writer) {
 	w.String(string(e.Code))
 	w.RawString(keyMessage)
 	w.String(e.Message)
-	w.RawString(",\"")
-	w.RawString(e.ParamName)
-	w.RawString("\":")
+	w.RawString(e.ParamKey)
 	w.Int64(e.ParamValue)
 	w.RawByte('}')
 }
