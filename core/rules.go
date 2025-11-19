@@ -1,9 +1,11 @@
 package core
 
-// Rule is the name for the applied field constraint.
+// Rule is the name for the field constraint.
 type Rule string
 
 const (
-	RuleMin Rule = "MIN"
-	RuleMax Rule = "MAX"
+	RuleMinimum          Rule = "MINIMUM"
+	RuleMaximum          Rule = "MAXIMUM"
+	RuleExclusiveMinimum Rule = "EXCLUSIVE_MINIMUM"
+	RuleExclusiveMaximum Rule = "EXCLUSIVE_MAXIMUM"
 )

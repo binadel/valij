@@ -3,80 +3,44 @@ package validations
 import (
 	"github.com/binadel/vali/constraints"
 	"github.com/binadel/vali/core"
-	"github.com/mailru/easyjson/jwriter"
+	"github.com/binadel/vali/validations/results"
 )
-
-const (
-	keyPath   = "\"path\":"
-	keyValue  = ",\"value\":"
-	keyErrors = ",\"errors\":"
-)
-
-type IntResult struct {
-	path   core.FieldPath
-	value  int64
-	errors []core.Error
-}
-
-func (r IntResult) Path() core.FieldPath {
-	return r.path
-}
-
-func (r IntResult) Value() int64 {
-	return r.value
-}
-
-func (r IntResult) Errors() []core.Error {
-	return r.errors
-}
-
-func (r IntResult) MarshalEasyJSON(w *jwriter.Writer) {
-	w.RawByte('{')
-
-	w.RawString(keyPath)
-	r.path.MarshalEasyJSON(w)
-
-	w.RawString(keyValue)
-	w.Int64(r.value)
-
-	w.RawString(keyErrors)
-	w.RawByte('[')
-	for i, err := range r.errors {
-		if i > 0 {
-			w.RawByte(',')
-		}
-		err.MarshalEasyJSON(w)
-	}
-	w.RawByte(']')
-
-	w.RawByte('}')
-}
 
 type IntValidation struct {
 	Path        core.FieldPath
 	constraints []core.IntValidator
 }
 
-func (v IntValidation) Min(min int64) IntValidation {
-	v.constraints = append(v.constraints, constraints.MinInt(min))
+func (v IntValidation) Minimum(minimum int64) IntValidation {
+	v.constraints = append(v.constraints, constraints.MinimumInt(minimum))
 	return v
 }
 
-func (v IntValidation) Max(max int64) IntValidation {
-	v.constraints = append(v.constraints, constraints.MaxInt(max))
+func (v IntValidation) ExclusiveMinimum(exclusiveMinimum int64) IntValidation {
+	v.constraints = append(v.constraints, constraints.ExclusiveMinimumInt(exclusiveMinimum))
 	return v
 }
 
-func (v IntValidation) Validate(value int64) IntResult {
+func (v IntValidation) Maximum(maximum int64) IntValidation {
+	v.constraints = append(v.constraints, constraints.MaximumInt(maximum))
+	return v
+}
+
+func (v IntValidation) ExclusiveMaximum(exclusiveMaximum int64) IntValidation {
+	v.constraints = append(v.constraints, constraints.ExclusiveMaximumInt(exclusiveMaximum))
+	return v
+}
+
+func (v IntValidation) Validate(value int64) results.IntResult {
 	var errors []core.Error
 	for _, constraint := range v.constraints {
 		if err := constraint(value); err != nil {
 			errors = append(errors, err)
 		}
 	}
-	return IntResult{
-		path:   v.Path,
-		value:  value,
-		errors: errors,
+	return results.IntResult{
+		Path:   v.Path,
+		Value:  value,
+		Errors: errors,
 	}
 }
