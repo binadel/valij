@@ -5,3 +5,6 @@ type IntValidator func(int64) Error
 
 // FloatValidator validates float fields.
 type FloatValidator func(float64) Error
+
+// StringValidator validates string fields.
+type StringValidator func(string) Error

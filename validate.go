@@ -16,3 +16,9 @@ func Float(path ...string) validations.FloatValidation {
 		Path: core.Field(path),
 	}
 }
+
+func String(path ...string) validations.StringValidation {
+	return validations.StringValidation{
+		Path: core.Field(path),
+	}
+}

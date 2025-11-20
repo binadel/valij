@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	result := vali.Float("product", "price").ExclusiveMinimum(10000).Validate(1111)
+	result := vali.String("product", "title").MaxLength(10).Validate("Some product name")
 	json, _ := easyjson.Marshal(result)
 	fmt.Println(string(json))
 }
