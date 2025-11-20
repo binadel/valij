@@ -10,6 +10,7 @@ var exclusiveMaximumError = errors.BasicError{
 	Message: "value must be less than {{maximum}}",
 }
 
+// ExclusiveMaximumInt applies exclusive maximum constraint to an integer.
 func ExclusiveMaximumInt(maximum int64) core.IntValidator {
 	return func(value int64) core.Error {
 		if value >= maximum {

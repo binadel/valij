@@ -10,6 +10,7 @@ var maximumError = errors.BasicError{
 	Message: "value must be less than or equal to {{maximum}}",
 }
 
+// MaximumInt applies maximum constraint to an integer.
 func MaximumInt(maximum int64) core.IntValidator {
 	return func(value int64) core.Error {
 		if value > maximum {
