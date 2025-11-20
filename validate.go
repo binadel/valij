@@ -10,3 +10,9 @@ func Int(path ...string) validations.IntValidation {
 		Path: core.Field(path),
 	}
 }
+
+func Float(path ...string) validations.FloatValidation {
+	return validations.FloatValidation{
+		Path: core.Field(path),
+	}
+}

@@ -23,3 +23,17 @@ func ExclusiveMaximumInt(maximum int64) core.IntValidator {
 		return nil
 	}
 }
+
+// ExclusiveMaximumFloat applies exclusive maximum constraint to a float.
+func ExclusiveMaximumFloat(maximum float64) core.FloatValidator {
+	return func(value float64) core.Error {
+		if value >= maximum {
+			return &errors.FloatParamError{
+				BasicError: exclusiveMaximumError,
+				ParamKey:   errors.ParamKeyMaximum,
+				ParamValue: maximum,
+			}
+		}
+		return nil
+	}
+}

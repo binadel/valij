@@ -23,3 +23,17 @@ func ExclusiveMinimumInt(minimum int64) core.IntValidator {
 		return nil
 	}
 }
+
+// ExclusiveMinimumFloat applies exclusive minimum constraint to a float.
+func ExclusiveMinimumFloat(minimum float64) core.FloatValidator {
+	return func(value float64) core.Error {
+		if value <= minimum {
+			return &errors.FloatParamError{
+				BasicError: exclusiveMinimumError,
+				ParamKey:   errors.ParamKeyMinimum,
+				ParamValue: minimum,
+			}
+		}
+		return nil
+	}
+}

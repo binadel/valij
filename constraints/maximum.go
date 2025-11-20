@@ -23,3 +23,17 @@ func MaximumInt(maximum int64) core.IntValidator {
 		return nil
 	}
 }
+
+// MaximumFloat applies maximum constraint to a float.
+func MaximumFloat(maximum float64) core.FloatValidator {
+	return func(value float64) core.Error {
+		if value > maximum {
+			return &errors.FloatParamError{
+				BasicError: maximumError,
+				ParamKey:   errors.ParamKeyMaximum,
+				ParamValue: maximum,
+			}
+		}
+		return nil
+	}
+}

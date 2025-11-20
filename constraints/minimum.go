@@ -23,3 +23,17 @@ func MinimumInt(minimum int64) core.IntValidator {
 		return nil
 	}
 }
+
+// MinimumFloat applies minimum constraint to a float.
+func MinimumFloat(minimum float64) core.FloatValidator {
+	return func(value float64) core.Error {
+		if value < minimum {
+			return &errors.FloatParamError{
+				BasicError: minimumError,
+				ParamKey:   errors.ParamKeyMinimum,
+				ParamValue: minimum,
+			}
+		}
+		return nil
+	}
+}
