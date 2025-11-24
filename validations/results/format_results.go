@@ -39,3 +39,8 @@ type TimeResult struct {
 	StringResult
 	Time time.Time
 }
+
+type DurationResult struct {
+	StringResult
+	Duration time.Duration
+}

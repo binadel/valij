@@ -42,6 +42,12 @@ func (v StringValidation) UUID() UuidValidation {
 	}
 }
 
+func (v StringValidation) URI() UriValidation {
+	return UriValidation{
+		stringValidation: v,
+	}
+}
+
 func (v StringValidation) Email() EmailValidation {
 	return EmailValidation{
 		stringValidation: v,
@@ -70,6 +76,18 @@ func (v StringValidation) Date() TimeValidation {
 
 func (v StringValidation) DateTime() TimeValidation {
 	return TimeValidation{
+		stringValidation: v,
+	}
+}
+
+func (v StringValidation) Duration() DurationValidation {
+	return DurationValidation{
+		stringValidation: v,
+	}
+}
+
+func (v StringValidation) Regex() RegexValidation {
+	return RegexValidation{
 		stringValidation: v,
 	}
 }
