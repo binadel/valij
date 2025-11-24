@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/binadel/vali"
+	"github.com/google/uuid"
 	"github.com/mailru/easyjson"
 )
 
@@ -12,7 +13,12 @@ func main() {
 	json, _ := easyjson.Marshal(result)
 	fmt.Println(string(json))
 
-	result = vali.String("user", "email").Pattern(vali.PatternEmail).Validate("somone@somewhere.com")
-	json, _ = easyjson.Marshal(result)
+	result2 := vali.String("user", "email").Pattern(vali.PatternEmail).Email().Validate("somone@somewhere.com")
+	json, _ = easyjson.Marshal(result2)
+	fmt.Println(string(json))
+
+	id := uuid.New().String()
+	result3 := vali.String("user", "email").UUID().Version(7).Validate(id)
+	json, _ = easyjson.Marshal(result3)
 	fmt.Println(string(json))
 }

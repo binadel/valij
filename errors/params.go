@@ -9,6 +9,7 @@ const (
 	ParamKeyLength    = ",\"length\":"
 	ParamKeyMinLength = ",\"minLength\":"
 	ParamKeyMaxLength = ",\"maxLength\":"
+	ParamKeyVersion   = ",\"version\":"
 )
 
 // IntParamError provides additional information about the validation constraint,

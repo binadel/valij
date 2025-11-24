@@ -23,5 +23,6 @@ const (
 	RuleIPv6             Rule = "IP_V6"
 	RuleUri              Rule = "URI"
 	RuleUuid             Rule = "UUID"
+	RuleUuidVersion      Rule = "UUID_VERSION"
 	RuleRegex            Rule = "REGEX"
 )

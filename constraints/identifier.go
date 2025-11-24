@@ -13,15 +13,27 @@ var uuidError = &errors.BasicError{
 	Message: "value must be a valid UUID",
 }
 
+var uuidVersionError = errors.BasicError{
+	Code:    core.RuleUuidVersion,
+	Message: "value must be a valid UUID version {{version}}",
+}
+
 var uriError = &errors.BasicError{
 	Code:    core.RuleUri,
 	Message: "value must be a valid URI",
 }
 
 // ParseUuid parses the given string as a UUID.
-func ParseUuid(value string) (uuid.UUID, core.Error) {
+func ParseUuid(value string, version uuid.Version) (uuid.UUID, core.Error) {
 	if id, err := uuid.Parse(value); err == nil {
-		return id, nil
+		if version == 0 || id.Version() == version {
+			return id, nil
+		}
+		return uuid.Nil, &errors.IntParamError{
+			BasicError: uuidVersionError,
+			ParamKey:   errors.ParamKeyVersion,
+			ParamValue: int64(version),
+		}
 	}
 	return uuid.Nil, uuidError
 }

@@ -36,6 +36,18 @@ func (v StringValidation) Pattern(pattern string) StringValidation {
 	return v
 }
 
+func (v StringValidation) UUID() UuidValidation {
+	return UuidValidation{
+		stringValidation: v,
+	}
+}
+
+func (v StringValidation) Email() EmailValidation {
+	return EmailValidation{
+		stringValidation: v,
+	}
+}
+
 // Validate applies the validations constraints to the field value and returns the result.
 func (v StringValidation) Validate(value string) results.StringResult {
 	var errors []core.Error
