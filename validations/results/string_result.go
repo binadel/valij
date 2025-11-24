@@ -39,3 +39,8 @@ func (r StringResult) MarshalEasyJSON(w *jwriter.Writer) {
 
 	w.RawByte('}')
 }
+
+type FormatResult[T any] struct {
+	StringResult
+	Format T
+}

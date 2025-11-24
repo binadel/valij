@@ -1,6 +1,8 @@
 package validations
 
 import (
+	"net"
+
 	"github.com/binadel/vali/constraints"
 	"github.com/binadel/vali/validations/results"
 )
@@ -21,15 +23,15 @@ func (v IpValidation) Version6() IpValidation {
 }
 
 // Validate applies the validations constraints to the field value and returns the result.
-func (v IpValidation) Validate(value string) results.IpResult {
-	var result results.IpResult
+func (v IpValidation) Validate(value string) results.FormatResult[net.IP] {
+	var result results.FormatResult[net.IP]
 	result.StringResult = v.stringValidation.Validate(value)
 
 	if len(result.Errors) == 0 {
 		if ip, err := constraints.ParseIP(value, v.version); err != nil {
 			result.Errors = append(result.Errors, err)
 		} else {
-			result.IP = ip
+			result.Format = ip
 		}
 	}
 

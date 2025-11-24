@@ -1,6 +1,8 @@
 package validations
 
 import (
+	"net/url"
+
 	"github.com/binadel/vali/constraints"
 	"github.com/binadel/vali/validations/results"
 )
@@ -10,15 +12,15 @@ type UriValidation struct {
 }
 
 // Validate applies the validations constraints to the field value and returns the result.
-func (v UriValidation) Validate(value string) results.UriResult {
-	var result results.UriResult
+func (v UriValidation) Validate(value string) results.FormatResult[*url.URL] {
+	var result results.FormatResult[*url.URL]
 	result.StringResult = v.stringValidation.Validate(value)
 
 	if len(result.Errors) == 0 {
 		if uri, err := constraints.ParseUri(value); err != nil {
 			result.Errors = append(result.Errors, err)
 		} else {
-			result.URI = uri
+			result.Format = uri
 		}
 	}
 
