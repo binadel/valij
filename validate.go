@@ -5,20 +5,14 @@ import (
 	"github.com/binadel/vali/validations"
 )
 
-func Int(path ...string) validations.IntValidation {
-	return validations.IntValidation{
-		Path: core.Field(path),
-	}
+func Boolean(path ...string) validations.BooleanValidation {
+	return validations.BooleanValidation{Path: core.Field(path)}
 }
 
-func Float(path ...string) validations.FloatValidation {
-	return validations.FloatValidation{
-		Path: core.Field(path),
-	}
+func Number(path ...string) validations.NumberValidation {
+	return validations.NewNumberValidation(core.Field(path))
 }
 
 func String(path ...string) validations.StringValidation {
-	return validations.StringValidation{
-		Path: core.Field(path),
-	}
+	return validations.NewStringValidation(core.Field(path))
 }

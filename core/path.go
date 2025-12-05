@@ -32,11 +32,11 @@ func Field(path []string) FieldPath {
 	var json string
 	switch FieldPathRepresentation {
 	case PathRepresentationArray:
-		json = "[\"" + strings.Join(path, "\",\"") + "\"]"
+		json = `["` + strings.Join(path, `","`) + `"]`
 	case PathRepresentationDotted:
-		json = "\"" + strings.Join(path, ".") + "\""
+		json = `"` + strings.Join(path, ".") + `"`
 	case PathRepresentationSlashed:
-		json = "\"" + strings.Join(path, "/") + "\""
+		json = `"` + strings.Join(path, "/") + `"`
 	default:
 		panic("invalid FieldPath representation type")
 	}
@@ -51,7 +51,7 @@ func (p FieldPath) Segments() []string {
 	return p.segments
 }
 
-// MarshalEasyJSON writes the json representation to the output.
+// MarshalEasyJSON implements easyjson.Marshaler.
 func (p FieldPath) MarshalEasyJSON(w *jwriter.Writer) {
 	w.Raw(p.json, nil)
 }

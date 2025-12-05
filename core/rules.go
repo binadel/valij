@@ -4,6 +4,8 @@ package core
 type Rule string
 
 const (
+	RuleRequired         Rule = "REQUIRED"
+	RuleNotNull          Rule = "NOT_NULL"
 	RuleMinimum          Rule = "MINIMUM"
 	RuleMaximum          Rule = "MAXIMUM"
 	RuleExclusiveMinimum Rule = "EXCLUSIVE_MINIMUM"
