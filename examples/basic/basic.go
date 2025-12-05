@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/binadel/vali"
+	"github.com/binadel/valij"
 	"github.com/google/uuid"
 	"github.com/mailru/easyjson"
 )

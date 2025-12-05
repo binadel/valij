@@ -1,9 +1,9 @@
 package validations
 
 import (
-	"github.com/binadel/vali/constraints"
-	"github.com/binadel/vali/core"
-	"github.com/binadel/vali/validations/results"
+	"github.com/binadel/valij/constraints"
+	"github.com/binadel/valij/core"
+	"github.com/binadel/valij/validations/results"
 )
 
 // IntValidation defines the validation constraints for an integer field.

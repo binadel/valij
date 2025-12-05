@@ -4,8 +4,8 @@ import (
 	"regexp"
 	"sync"
 
-	"github.com/binadel/vali/core"
-	"github.com/binadel/vali/errors"
+	"github.com/binadel/valij/core"
+	"github.com/binadel/valij/errors"
 )
 
 var patternCache sync.Map

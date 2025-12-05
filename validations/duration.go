@@ -3,8 +3,8 @@ package validations
 import (
 	"time"
 
-	"github.com/binadel/vali/constraints"
-	"github.com/binadel/vali/validations/results"
+	"github.com/binadel/valij/constraints"
+	"github.com/binadel/valij/validations/results"
 )
 
 type DurationValidation struct {

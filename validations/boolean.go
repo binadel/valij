@@ -2,8 +2,8 @@ package validations
 
 import (
 	"github.com/binadel/jsontypes"
-	"github.com/binadel/vali/constraints"
-	"github.com/binadel/vali/core"
+	"github.com/binadel/valij/constraints"
+	"github.com/binadel/valij/core"
 )
 
 // BooleanValidation defines the validation constraints for a JSON boolean field.

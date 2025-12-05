@@ -1,7 +1,7 @@
 package errors
 
 import (
-	"github.com/binadel/vali/core"
+	"github.com/binadel/valij/core"
 	"github.com/mailru/easyjson/jwriter"
 )
 

@@ -1,4 +1,4 @@
-module github.com/binadel/vali
+module github.com/binadel/valij
 
 go 1.21
 

@@ -1,8 +1,8 @@
 package vali
 
 import (
-	"github.com/binadel/vali/core"
-	"github.com/binadel/vali/validations"
+	"github.com/binadel/valij/core"
+	"github.com/binadel/valij/validations"
 )
 
 func Boolean(path ...string) validations.BooleanValidation {

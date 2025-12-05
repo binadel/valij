@@ -1,8 +1,8 @@
 package validations
 
 import (
-	"github.com/binadel/vali/constraints"
-	"github.com/binadel/vali/validations/results"
+	"github.com/binadel/valij/constraints"
+	"github.com/binadel/valij/validations/results"
 	"github.com/google/uuid"
 )
 
